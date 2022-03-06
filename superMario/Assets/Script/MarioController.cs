@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MarioController : MonoBehaviour
 {
-    [Header("Sprite")]
-    public Sprite jumpSprite;
-    public Sprite standSprite;
-    public Sprite stopSprite;
+    //[Header("Sprite")]
+    //public Sprite jumpSprite;
+    //public Sprite standSprite;
+    //public Sprite stopSprite;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
@@ -64,6 +64,10 @@ public class MarioController : MonoBehaviour
     private void move(float dir)
     {
         rid.AddForce(Vector2.right * dir * moveSpeed);
+        if (Mathf.Abs(rid.velocity.x) > 0.2 && onGround)
+            animator.SetBool("isRunning", true);
+        else if (rid.velocity.x <= 0.2 && onGround)
+            animator.SetBool("isRunning", false);
         if (dir < 0)
             transform.localScale = new Vector3(-1, 1, 1);
         else if (dir > 0)
@@ -74,11 +78,11 @@ public class MarioController : MonoBehaviour
         }
     }
 
-
     private void jump()
     {
         if (onGround && Input.GetButtonDown("Jump"))
         {
+            animator.Play("jump");
             rid.velocity = new Vector2(rid.velocity.x, 0);
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);  
         }
@@ -87,32 +91,34 @@ public class MarioController : MonoBehaviour
     private void isOnGround()
     {
         onGround = Physics2D.Raycast(transform.position, Vector2.down, groundLength, groundLayer);
-        if (onGround && !isChangingDir)
-        {
-            mySprite.sprite = standSprite;
-        }
-        else if (!onGround && !isChangingDir)
-        {
-            mySprite.sprite = jumpSprite;
-        }
+        animator.SetBool("isOnGround", onGround);
+        //if (onGround && !isChangingDir)
+        //{
+        //    animator.SetBool("isOnGround", true);
+        //    //mySprite.sprite = standSprite;
+        //}
+        //else if (!onGround && !isChangingDir)
+        //{
+        //    animator.SetBool("isOnGround", false);
+        //    //mySprite.sprite = jumpSprite;
+        //}
     }
 
     private void modifyPhysics()
     {
-        isChangingDir = (dir.x > 0 && rid.velocity.x < 0) || (dir.x < 0 && rid.velocity.x > 0);
-        if (onGround)
+        isChangingDir = (dir.x > 0 && rid.velocity.x < 0) || (dir.x < 0 && rid.velocity.x > 0) && onGround;
+        if (onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
             rid.gravityScale = gravity;
             moveSpeed = 10f;
             if (isChangingDir)
             {
                 rid.drag = linearDrag;
-                mySprite.sprite = stopSprite;
+                animator.Play("stop");
             }
             else
             {
                 rid.drag = 0f;
-                mySprite.sprite = standSprite;
             }
         }
         else if (!onGround)
