@@ -8,6 +8,8 @@ public class MarioController : MonoBehaviour
     //public Sprite jumpSprite;
     //public Sprite standSprite;
     //public Sprite stopSprite;
+    [Header("Mario State")]
+    public bool isDead = false;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
@@ -50,17 +52,26 @@ public class MarioController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead)
+            return;
         move(dir.x);
         modifyPhysics();
     }
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            return;
         dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         isOnGround();
         jump();
     }
 
+    public void die()
+    {
+        isDead = true;
+        Debug.Log("die");
+    }
     private void move(float dir)
     {
         rid.AddForce(Vector2.right * dir * moveSpeed);
@@ -92,16 +103,6 @@ public class MarioController : MonoBehaviour
     {
         onGround = Physics2D.Raycast(transform.position, Vector2.down, groundLength, groundLayer);
         animator.SetBool("isOnGround", onGround);
-        //if (onGround && !isChangingDir)
-        //{
-        //    animator.SetBool("isOnGround", true);
-        //    //mySprite.sprite = standSprite;
-        //}
-        //else if (!onGround && !isChangingDir)
-        //{
-        //    animator.SetBool("isOnGround", false);
-        //    //mySprite.sprite = jumpSprite;
-        //}
     }
 
     private void modifyPhysics()
