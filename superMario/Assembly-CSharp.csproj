@@ -58,6 +58,11 @@
   <ItemGroup>
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\MarioController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Assets\Script\normalEnemy.cs" />
+    <Compile Include="Assets\Script\TurtleEnemy.cs" />
+=======
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
