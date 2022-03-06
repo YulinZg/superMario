@@ -77,7 +77,7 @@ public class MarioController : MonoBehaviour
         rid.AddForce(Vector2.right * dir * moveSpeed);
         if (Mathf.Abs(rid.velocity.x) > 0.2 && onGround)
             animator.SetBool("isRunning", true);
-        else if (rid.velocity.x <= 0.2 && onGround)
+        else if (Mathf.Abs(rid.velocity.x) <= 0.2 && onGround)
             animator.SetBool("isRunning", false);
         if (dir < 0)
             transform.localScale = new Vector3(-1, 1, 1);

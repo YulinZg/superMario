@@ -6,17 +6,17 @@ public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
     [Header("Movement")]
-    public float moveSpeed = 7f;
-    public Vector2 dir;
+    public float moveSpeed = 1f;
+    public Vector3 dir = new Vector3(-1,0,0);
 
-    [Header("Player")]
+    [Header("Components")]
     public MarioController marioScript;
 
     [Header("Ray")]
-    public LayerMask tileLayer;
-    public LayerMask enemyLayer;
+    public Vector3 rayOffset = new Vector3(-0.4f,0,0);
+    public LayerMask collisionLayer;
     public float checkLength = 1.0f;
-    public Vector2 checkDir;
+    public Vector2 checkDir = new Vector2(-1,0);
     void Start()
     {
         
@@ -25,25 +25,31 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        move();
+        checkCollision();
+        //checkTile();
+        //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
     }
 
     void move()
     {
-        
+        transform.position += dir * Time.deltaTime * moveSpeed;
     }
 
     void changeDir()
     {
-
+        dir.x *= -1;
+        checkDir.x *= -1;
+        rayOffset *= -1;
+        transform.localScale = new Vector3(dir.x, 1, 1);
     }
 
-    void checkEnemy()
+    void checkCollision()
     {
-        bool isHitEnemy = Physics2D.Raycast(transform.position, checkDir, checkLength, enemyLayer);
+        bool isHitEnemy = Physics2D.Raycast(transform.position + rayOffset, checkDir, checkLength, collisionLayer);
         if (isHitEnemy)
         {
-
+            changeDir();   
         }
     }
 
