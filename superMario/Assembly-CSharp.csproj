@@ -60,9 +60,9 @@
     <Compile Include="Assets\Script\MarioController.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\Brick.cs" />
+    <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\normalEnemy.cs" />
     <Compile Include="Assets\Script\TurtleEnemy.cs" />
-    <Compile Include="Assets\Script\Coin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
