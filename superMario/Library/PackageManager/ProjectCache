@@ -5,16 +5,24 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637818863652848395
-    m_Hash: 2989432480
+<<<<<<< HEAD
+      ticks: 637821806052289087
+=======
+      ticks: 637821809250002088
+>>>>>>> main
+    m_Hash: 1210271494
   m_LockFileStatus:
     m_FilePath: C:/Users/Orangestar/Desktop/Study/S6/GDS1/Lab2/superMario/superMario/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637818863767096462
-    m_Hash: 1323924065
+<<<<<<< HEAD
+      ticks: 637821806052309310
+=======
+      ticks: 637821809250012059
+>>>>>>> main
+    m_Hash: 2425293117
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
