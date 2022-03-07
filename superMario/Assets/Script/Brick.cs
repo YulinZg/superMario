@@ -44,7 +44,7 @@ public class Brick : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
