@@ -20,7 +20,7 @@ public class MarioController : MonoBehaviour
     [Header("Physics")]
     public float linearDrag = 1.5f;
     public float gravity = 1f;
-    public float fallMultiplier = 5f;
+    public float fallMultiplier = 4f;
     public float maxSpeed = 7f;
 
     [Header("Collision")]
@@ -28,9 +28,11 @@ public class MarioController : MonoBehaviour
     public float groundLength = 0.3f;
 
     [Header("Components")]
+    public BoxCollider2D col;
     public Rigidbody2D rid;
     public Animator animator;
     public LayerMask groundLayer;
+    public LayerMask enemyLayer;
     public SpriteRenderer mySprite;
     
    
@@ -64,12 +66,17 @@ public class MarioController : MonoBehaviour
             return;
         dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         isOnGround();
+        checkDamage();
         jump();
     }
 
     public void die()
     {
         isDead = true;
+        animator.Play("dead");
+        rid.velocity = new Vector2(0, 0);
+        rid.AddForce(Vector2.up * 4, ForceMode2D.Impulse);
+        col.enabled = false;
         Debug.Log("die");
     }
     private void move(float dir)
@@ -126,7 +133,7 @@ public class MarioController : MonoBehaviour
         {
             rid.gravityScale = gravity * 1.5f;
             rid.drag = linearDrag * 0.15f;
-            moveSpeed = 2f;
+            moveSpeed = 3f;
             if (rid.velocity.y < 0)
             {
                 rid.gravityScale = gravity * fallMultiplier;
@@ -136,5 +143,42 @@ public class MarioController : MonoBehaviour
                 rid.gravityScale = gravity * fallMultiplier / 2;
             }
         }
+    }
+
+    private void checkDamage()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(i / 50f - 0.3f, -0.1f, 0), Vector2.down, groundLength, enemyLayer);
+            Debug.DrawRay(transform.position + new Vector3(i / 60f - 0.25f, -0.1f, 0), Vector2.down * groundLength);
+            if (hit.collider && hit.collider.GetComponent<NormalEnemy>())
+            {
+                if (hit.collider.CompareTag("enemy"))
+                    hit.collider.GetComponent<NormalEnemy>().die();
+                rid.velocity = new Vector2(rid.velocity.x, 0);
+                rid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+            }
+            if (hit.collider && hit.collider.GetComponent<TurtleEnemy>())
+            {
+                if (hit.collider.CompareTag("enemy") && !hit.collider.GetComponent<TurtleEnemy>().isShell)
+                    hit.collider.GetComponent<TurtleEnemy>().die();
+                else if (hit.collider.CompareTag("enemy") && hit.collider.GetComponent<TurtleEnemy>().isShell)
+                {
+                    if(i >= 20)
+                    {
+                        hit.collider.GetComponent<TurtleEnemy>().shellMoveDir = new Vector3(1,0,0);
+                    }
+                    else if (i < 10)
+                    {
+                        hit.collider.GetComponent<TurtleEnemy>().shellMoveDir = new Vector3(-1, 0, 0);
+                    }
+                    hit.collider.gameObject.layer = LayerMask.NameToLayer("shell");
+                    hit.collider.GetComponent<TurtleEnemy>().canShellMove();
+                }
+                rid.velocity = new Vector2(rid.velocity.x, 0);
+                rid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+            }
+        }
+
     }
 }
