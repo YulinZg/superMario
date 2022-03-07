@@ -151,17 +151,10 @@ public class MarioController : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(i / 50f - 0.3f, -0.1f, 0), Vector2.down, groundLength, enemyLayer);
             Debug.DrawRay(transform.position + new Vector3(i / 60f - 0.25f, -0.1f, 0), Vector2.down * groundLength);
-<<<<<<< HEAD
-            if (hit.collider && hit.collider.GetComponent<NormalEnemy>())
-            {
-                if (hit.collider.CompareTag("enemy"))
-                    hit.collider.GetComponent<NormalEnemy>().die();
-=======
             if (hit.collider && hit.collider.GetComponent<normalEnemy>())
             {
                 if (hit.collider.CompareTag("enemy"))
                     hit.collider.GetComponent<normalEnemy>().die();
->>>>>>> 16525a6eda6d6387df49d421214e109af80b3073
                 rid.velocity = new Vector2(rid.velocity.x, 0);
                 rid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
             }
