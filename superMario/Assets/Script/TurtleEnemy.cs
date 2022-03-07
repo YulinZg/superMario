@@ -46,8 +46,9 @@ public class TurtleEnemy : EnemyController
         else if(isShellMoving && isShell)
         {
             shellMove();
+            //checkDir.x = shellMoveDir.x;
         }
-       
+
         //checkTile();
         //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
     }
@@ -62,6 +63,8 @@ public class TurtleEnemy : EnemyController
 
     public void canShellMove()
     {
+        collisionLayer = 1 << LayerMask.NameToLayer("Ground");
+        checkDir.x = shellMoveDir.x;
         isShellMoving = true;
     }
     public void shellMove()
@@ -78,24 +81,28 @@ public class TurtleEnemy : EnemyController
         if (collision.gameObject.tag.Equals("Player") && isShell)
         {
             canShellMove();
+            gameObject.layer = LayerMask.NameToLayer("shell");
             shellMoveDir = collision.gameObject.GetComponent<MarioController>().dir;
+            checkDir.x = collision.gameObject.GetComponent<MarioController>().dir.x;
+            if (Mathf.Sign(checkDir.x) != Mathf.Sign(rayOffset.x))
+                rayOffset *= -1;
         }
     }
 
     new protected void changeDir()
     {
-        shellMoveDir.x *= -1;
-        dir.x *= -1;
-        checkDir.x *= -1;
-        rayOffset *= -1;
-        transform.localScale = new Vector3(dir.x, 1, 1);
+         shellMoveDir.x *= -1;
+         dir.x *= -1;
+         checkDir.x *= -1;
+         rayOffset *= -1;
+         transform.localScale = new Vector3(dir.x, 1, 1);
     }
 
-    new void checkCollision()
+    new protected void checkCollision()
     {
-        if (isShell)
-            collisionLayer = 1 << LayerMask.NameToLayer("Ground");
+            
         bool isHitEnemy = Physics2D.Raycast(transform.position + rayOffset, checkDir, checkLength, collisionLayer);
+        Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
         if (isHitEnemy)
         {
             changeDir();

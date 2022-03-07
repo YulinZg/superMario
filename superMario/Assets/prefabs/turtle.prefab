@@ -103,7 +103,7 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 192
-  checkLength: 0.05
+  checkLength: 1
   checkDir: {x: -1, y: 0}
   walkAnim:
   - {fileID: 21300000, guid: 2f4a30f1667b241ef84370cde49d0229, type: 3}
@@ -114,8 +114,8 @@ MonoBehaviour:
   col: {fileID: 9084928101401894679}
   currentFrame: 1
   framesPerSecond: 2
-  shellMoveSpeed: 10
-  shellMoveDir: {x: 1, y: 0, z: 0}
+  shellMoveSpeed: 8
+  shellMoveDir: {x: -1, y: 0, z: 0}
   isShell: 0
   isShellMoving: 0
 --- !u!50 &9084928101401894678
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!61 &9084928101401894679
 BoxCollider2D:
