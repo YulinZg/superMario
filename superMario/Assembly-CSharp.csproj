@@ -56,11 +56,11 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\MarioController.cs" />
-    <Compile Include="Assets\Script\normalEnemy.cs" />
+    <Compile Include="Assets\Script\NormalEnemy.cs" />
     <Compile Include="Assets\Script\TurtleEnemy.cs" />
-    <Compile Include="Assets\Script\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
