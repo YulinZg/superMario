@@ -13821,7 +13821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &906791573
 GameObject:
@@ -13869,24 +13869,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1593189715
+--- !u!1001 &1409374499
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5577488219724500239, guid: 7bd93c327b3b97442bff518999803254, type: 3}
-      propertyPath: m_Frequency
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5577488219964498040, guid: 7bd93c327b3b97442bff518999803254, type: 3}
       propertyPath: m_Name
       value: Brick
       objectReference: {fileID: 0}
     - target: {fileID: 5577488219964498041, guid: 7bd93c327b3b97442bff518999803254, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5577488219964498041, guid: 7bd93c327b3b97442bff518999803254, type: 3}
       propertyPath: m_LocalPosition.x

@@ -184,13 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802708843987b774196cc76f2b3a1a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 7992015026350290327, guid: 89367f099df610f4bafbdf1f283a3852, type: 3}
+  upOffSet: 0.5
   sprites:
   - {fileID: 21300000, guid: 6bf2e17eb729148b193c14784cc88d27, type: 3}
   - {fileID: 21300002, guid: 6bf2e17eb729148b193c14784cc88d27, type: 3}
   - {fileID: 21300004, guid: 6bf2e17eb729148b193c14784cc88d27, type: 3}
   emptySprite: {fileID: 21300006, guid: 6bf2e17eb729148b193c14784cc88d27, type: 3}
   interval: 0.2
-  invokeTime: 0.5
+  dropTime: 0.25
+  setStaticTime: 0.5
 --- !u!1 &5577488219921858857
 GameObject:
   m_ObjectHideFlags: 0

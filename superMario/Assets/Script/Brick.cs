@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public GameObject obj;
+    public float upOffSet;
     public Sprite[] sprites;
     public Sprite emptySprite;
     public float interval;
-    public float invokeTime;
+    public float dropTime;
+    public float setStaticTime;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
     private float timer = 0;
@@ -33,10 +36,10 @@ public class Brick : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= interval)
         {
-            spriteRenderer.sprite = sprites[index];
             index++;
             if (index == sprites.Length)
                 index = 0;
+            spriteRenderer.sprite = sprites[index];
             timer = 0;
         }
     }
@@ -45,14 +48,20 @@ public class Brick : MonoBehaviour
     {
         if (!isEmpty)
         {
-            Invoke(nameof(Drop), invokeTime);
+            isEmpty = true;
+            spriteRenderer.sprite = emptySprite;
+            Invoke(nameof(Drop), dropTime);
+            Invoke(nameof(SetStatic), setStaticTime);
         }
     }
 
     void Drop()
     {
-        isEmpty = true;
-        spriteRenderer.sprite = emptySprite;
+        Instantiate(obj, new Vector3(0, upOffSet, 0), Quaternion.identity);
+    }
+
+    void SetStatic()
+    {
         rigidBody.bodyType = RigidbodyType2D.Static;
         transform.position = Vector3.zero;
     }
