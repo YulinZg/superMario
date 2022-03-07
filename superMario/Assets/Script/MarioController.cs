@@ -108,7 +108,9 @@ public class MarioController : MonoBehaviour
 
     private void isOnGround()
     {
-        onGround = Physics2D.Raycast(transform.position, Vector2.down, groundLength, groundLayer);
+        onGround = Physics2D.Raycast(transform.position + new Vector3( -0.32f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+                   Physics2D.Raycast(transform.position + new Vector3( 0.3f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+        //Debug.DrawRay(transform.position, Vector2.down * groundLength);
         animator.SetBool("isOnGround", onGround);
     }
 
@@ -150,7 +152,7 @@ public class MarioController : MonoBehaviour
         for (int i = 0; i < 30; i++)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(i / 50f - 0.3f, -0.1f, 0), Vector2.down, groundLength, enemyLayer);
-            Debug.DrawRay(transform.position + new Vector3(i / 60f - 0.25f, -0.1f, 0), Vector2.down * groundLength);
+            Debug.DrawRay(transform.position + new Vector3(i / 50f - 0.3f, -0.3f, 0), Vector2.down * groundLength);
             if (hit.collider && hit.collider.GetComponent<normalEnemy>())
             {
                 if (hit.collider.CompareTag("enemy"))
@@ -164,15 +166,19 @@ public class MarioController : MonoBehaviour
                     hit.collider.GetComponent<TurtleEnemy>().die();
                 else if (hit.collider.CompareTag("enemy") && hit.collider.GetComponent<TurtleEnemy>().isShell)
                 {
-                    if(i >= 20)
+                    if(i >= 15)
                     {
                         hit.collider.GetComponent<TurtleEnemy>().shellMoveDir = new Vector3(1,0,0);
+                        hit.collider.GetComponent<TurtleEnemy>().checkDir.x = 1;
                     }
-                    else if (i < 10)
+                    else if (i < 15)
                     {
                         hit.collider.GetComponent<TurtleEnemy>().shellMoveDir = new Vector3(-1, 0, 0);
+                        hit.collider.GetComponent<TurtleEnemy>().checkDir.x = -1; 
                     }
                     hit.collider.gameObject.layer = LayerMask.NameToLayer("shell");
+                    if (Mathf.Sign(hit.collider.GetComponent<TurtleEnemy>().checkDir.x) != Mathf.Sign(hit.collider.GetComponent<TurtleEnemy>().rayOffset.x))
+                        hit.collider.GetComponent<TurtleEnemy>().rayOffset *= -1;
                     hit.collider.GetComponent<TurtleEnemy>().canShellMove();
                 }
                 rid.velocity = new Vector2(rid.velocity.x, 0);

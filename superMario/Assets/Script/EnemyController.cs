@@ -16,7 +16,7 @@ namespace enemy
         public Vector3 rayOffset = new Vector3(-0.4f, 0, 0);
         public LayerMask collisionLayer;
         public float checkLength = 1.0f;
-        public Vector2 checkDir = new Vector2(-1, 0);
+        public Vector2 checkDir = new Vector2(1, 0);
         void Start()
         {
            
@@ -53,6 +53,10 @@ namespace enemy
             }
         }
 
+        protected void setCheckDir(float x)
+        {
+            checkDir.x = x;
+        }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag.Equals("Player"))
