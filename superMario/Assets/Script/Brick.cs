@@ -46,7 +46,7 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isEmpty)
+        if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
             isEmpty = true;
             spriteRenderer.sprite = emptySprite;
@@ -57,12 +57,12 @@ public class Brick : MonoBehaviour
 
     void Drop()
     {
-        Instantiate(obj, new Vector3(0, upOffSet, 0), Quaternion.identity);
+        Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
     }
 
     void SetStatic()
     {
         rigidBody.bodyType = RigidbodyType2D.Static;
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
     }
 }
