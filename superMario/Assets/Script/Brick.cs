@@ -16,12 +16,14 @@ public class Brick : MonoBehaviour
     private float timer = 0;
     private int index = 0;
     private bool isEmpty = false;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -52,7 +54,19 @@ public class Brick : MonoBehaviour
             spriteRenderer.sprite = emptySprite;
             Invoke(nameof(Drop), dropTime);
             Invoke(nameof(SetStatic), setStaticTime);
+            AudioClip audioclip = Resources.Load("Audios/Gold") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
+
         }
+
     }
 
     void Drop()

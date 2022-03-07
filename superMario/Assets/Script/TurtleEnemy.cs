@@ -59,6 +59,16 @@ public class TurtleEnemy : EnemyController
         isShell = true;
         mySpriteRenderer.sprite = shellAnim;
         CancelInvoke();
+        AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
     }
 
     public void canShellMove()
@@ -86,6 +96,17 @@ public class TurtleEnemy : EnemyController
             checkDir.x = collision.gameObject.GetComponent<MarioController>().dir.x;
             if (Mathf.Sign(checkDir.x) != Mathf.Sign(rayOffset.x))
                 rayOffset *= -1;
+
+            AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
         }
     }
 

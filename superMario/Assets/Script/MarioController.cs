@@ -49,7 +49,17 @@ public class MarioController : MonoBehaviour
     //private Status statu;
     void Start()
     {
-      
+        AudioClip audioclip = Resources.Load("Audios/Nintendo - Super Mario bros. theme") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     private void FixedUpdate()
@@ -78,6 +88,16 @@ public class MarioController : MonoBehaviour
         rid.AddForce(Vector2.up * 4, ForceMode2D.Impulse);
         col.enabled = false;
         Debug.Log("die");
+        AudioClip audioclip = Resources.Load("Audios/Die") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
     }
     private void move(float dir)
     {
