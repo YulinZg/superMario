@@ -33,6 +33,7 @@ public class MarioController : MonoBehaviour
 
     [Header("Components")]
     public BoxCollider2D col;
+    public BoxCollider2D tri;
     public Rigidbody2D rid;
     public Animator animator;
     public LayerMask groundLayer;
@@ -271,22 +272,29 @@ public class MarioController : MonoBehaviour
     }
     public void big()
     {
-        //animator.Play("dead");
-        //animator.Play("idle");
-        col.enabled = false;
-        rid.simulated = false;
-        rid.velocity = new Vector2(0, 0);
-        StartCoroutine(DoBlinks(40, 1.5f / 40));
-        Invoke("changeToBig", 1.7f);
+        if (!isBig)
+        {
+            //animator.Play("dead");
+            //animator.Play("idle");
+            isBig = true;
+            col.enabled = false;
+            tri.enabled = false;
+            rid.simulated = false;
+            rid.velocity = new Vector2(0, 0);
+            StartCoroutine(DoBlinks(40, 1.5f / 40));
+            Invoke("changeToBig", 1.7f);
+        }
 
     }
 
     private void changeToBig()
     {
-        isBig = true;
-        col.size = new Vector2(0.6591296f, 1.238812f);
-        col.offset = new Vector2(-0.01010871f, 0.3164123f);
+        col.size = new Vector2(0.55f, 1.2f);
+        col.offset = new Vector2(0, 0.3f);
+        tri.size = new Vector2(0.65f, 1f);
+        tri.offset = new Vector2(0, 0.2f);
         col.enabled = true;
+        tri.enabled = true;
         rid.simulated = true;
         animator.runtimeAnimatorController = bigMario;
 
@@ -312,10 +320,16 @@ public class MarioController : MonoBehaviour
                 mySprite.color = Color.white;
             yield return new WaitForSeconds(time);
         }
+        isInvincible = false;
+        if (canFire)
+            mySprite.color = Color.red;
+        else
+            mySprite.color = Color.white;
     }
+
     public void invincible()
     {
         isInvincible = true;
-        StartCoroutine(invincibleBlinks(100, 6f / 100));
+        StartCoroutine(invincibleBlinks(400, 20f / 400));
     }
 }

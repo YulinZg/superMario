@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e716fb7c4dd3442b845bf4f2ec6426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyTime: 3
   currentFrame: 1
   framesPerSecond: 8
   fireAnim:

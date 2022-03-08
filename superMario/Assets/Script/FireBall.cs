@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float destroyTime;
+
     [Header("Frame")]
     public int currentFrame = 3;
     public int framesPerSecond = 8;
@@ -18,6 +19,8 @@ public class FireBall : MonoBehaviour
     private float secondsPerFrame;
 
     private MarioController marioScript;
+
+    // Start is called before the first frame update
     void Start()
     {
         marioScript = GameObject.FindWithTag("Player").GetComponent<MarioController>();
@@ -28,6 +31,7 @@ public class FireBall : MonoBehaviour
         rid.AddForce(Vector3.up * froce/2, ForceMode2D.Impulse);
         secondsPerFrame = 1.0f / framesPerSecond;
         Invoke("NextFrame", secondsPerFrame);
+        Invoke("Disappear", destroyTime);
     }
 
     void NextFrame()
@@ -48,5 +52,10 @@ public class FireBall : MonoBehaviour
                 collision.gameObject.GetComponent<TurtleEnemy>().fireDie();
             Destroy(gameObject);
         }
+    }
+
+    void Disappear()
+    {
+        Destroy(gameObject);
     }
 }

@@ -18,12 +18,14 @@ public class Brick : MonoBehaviour
     private float timer = 0;
     private int index = 0;
     private bool isEmpty = false;
+    private MarioController player;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<MarioController>();
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class Brick : MonoBehaviour
 
     void Drop()
     {
-        if (true)
+        if (!player.isBig)
             Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
         else
             Instantiate(superObj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
