@@ -6,17 +6,19 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float smoothing;
     private Transform target;
+    private MarioController mario;
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        mario = target.gameObject.GetComponent<MarioController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        if (!mario.isDead)
             if (transform.position != target.position)
                 MoveCamera();
     }

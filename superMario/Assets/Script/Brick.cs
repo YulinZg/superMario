@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public float upForce;
     public GameObject obj;
+    public GameObject superObj;
     public float upOffSet;
     public Sprite[] sprites;
     public Sprite emptySprite;
@@ -48,16 +50,24 @@ public class Brick : MonoBehaviour
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
+            GetComponentInParent<Rigidbody2D>().AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             isEmpty = true;
             spriteRenderer.sprite = emptySprite;
             Invoke(nameof(Drop), dropTime);
             Invoke(nameof(SetStatic), setStaticTime);
         }
+        else if (collision.gameObject.CompareTag("enemy"))
+        {
+            collision.GetComponent<normalEnemy>().die();
+        }
     }
 
     void Drop()
     {
-        Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
+        if (true)
+            Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
+        else
+            Instantiate(superObj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
     }
 
     void SetStatic()
