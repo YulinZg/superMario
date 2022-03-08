@@ -26,7 +26,7 @@ public class CoinBrick : MonoBehaviour
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
-            if (number > 0)
+            if (number > 1)
             {
                 number--;
                 rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
@@ -34,6 +34,8 @@ public class CoinBrick : MonoBehaviour
             }
             else 
             {
+                rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+                Invoke(nameof(Drop), dropTime);
                 isEmpty = true;
                 spriteRenderer.sprite = emptySprite;
                 Invoke(nameof(SetStatic), setStaticTime);

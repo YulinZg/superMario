@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\BreakableBrick.cs" />
     <Compile Include="Assets\Script\Brick.cs" />
+    <Compile Include="Assets\Script\BrickFragment.cs" />
     <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\FloatingCoin.cs" />
     <Compile Include="Assets\Script\Mushroom.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\Script\HiddenBrick.cs" />
     <Compile Include="Assets\Script\TurtleEnemy.cs" />
     <Compile Include="Assets\Script\CoinBrick.cs" />
-    <Compile Include="Assets\Script\BrickFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
