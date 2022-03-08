@@ -63,6 +63,9 @@
     <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\normalEnemy.cs" />
     <Compile Include="Assets\Script\TurtleEnemy.cs" />
+    <Compile Include="Assets\Script\FloatingCoin.cs" />
+    <Compile Include="Assets\Script\Mushroom.cs" />
+    <Compile Include="Assets\Script\Flower.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
