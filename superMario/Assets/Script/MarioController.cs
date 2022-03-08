@@ -10,10 +10,11 @@ public class MarioController : MonoBehaviour
     //public Sprite stopSprite;
     [Header("Mario State")]
     public bool isDead = false;
+    public bool isBig = false;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
-    public float jumpForce = 10f;
+    public float jumpForce = 12f;
     public Vector2 dir;
     public bool isChangingDir;
 
@@ -33,9 +34,13 @@ public class MarioController : MonoBehaviour
     public Animator animator;
     public LayerMask groundLayer;
     public LayerMask enemyLayer;
-    public SpriteRenderer mySprite;
-    
-   
+    public GameObject bigMario;
+    public RuntimeAnimatorController bigAn;
+
+    private GameObject smallMario;
+    //public SpriteRenderer mySprite;
+
+
     //private enum Status
     //{
     //    stand,
@@ -49,14 +54,14 @@ public class MarioController : MonoBehaviour
     //private Status statu;
     void Start()
     {
-      
+        smallMario = this.gameObject;
     }
 
     private void FixedUpdate()
     {
         if (isDead)
             return;
-        move(dir.x);
+       
         modifyPhysics();
     }
     // Update is called once per frame
@@ -65,6 +70,7 @@ public class MarioController : MonoBehaviour
         if (isDead)
             return;
         dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        move(dir.x);
         isOnGround();
         checkDamage();
         jump();
@@ -72,6 +78,10 @@ public class MarioController : MonoBehaviour
 
     public void die()
     {
+        //if (isBig)
+        //{
+        //    smallMario.SetActive(true);
+        //}
         isDead = true;
         animator.Play("dead");
         rid.velocity = new Vector2(0, 0);
@@ -101,7 +111,7 @@ public class MarioController : MonoBehaviour
         if (onGround && Input.GetButtonDown("Jump"))
         {
             animator.Play("jump");
-            rid.velocity = new Vector2(rid.velocity.x, 0);
+            //rid.velocity = new Vector2(rid.velocity.x, 0);
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);  
         }
     }
@@ -186,5 +196,14 @@ public class MarioController : MonoBehaviour
             }
         }
 
+    }
+
+    public void big()
+    {
+        //smallMario.SetActive(false);
+        animator.runtimeAnimatorController = bigAn;
+        //Instantiate(bigMario, transform.position, Quaternion.identity);
+        isBig = true;
+        Debug.Log("big");
     }
 }
