@@ -11,10 +11,12 @@ public class Coin : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float timer = 0;
     private int index = 0;
+    private GameManagement game;
 
     // Start is called before the first frame update
     void Start()
     {
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
         Invoke(nameof(Disappear), disappearTime);
@@ -29,6 +31,8 @@ public class Coin : MonoBehaviour
 
     void Disappear()
     {
+        game.updateCoins(1);
+        game.updateScore(200);
         Destroy(gameObject);
     }
 

@@ -11,10 +11,11 @@ public class Flower : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float timer = 0;
     private int index = 0;
-
+    private GameManagement game;
     // Start is called before the first frame update
     void Start()
     {
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(Rise(riseDistance, riseTime));
     }
@@ -31,6 +32,7 @@ public class Flower : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<MarioController>().changeToFire();
+            game.updateScore(2000);
             Destroy(gameObject);
         }
     }

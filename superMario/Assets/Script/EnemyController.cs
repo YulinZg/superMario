@@ -27,6 +27,7 @@ namespace enemy
         {
             move();
             checkCollision();
+
             //checkTile();
             //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
         }

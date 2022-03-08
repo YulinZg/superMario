@@ -23,10 +23,11 @@ public class Mushroom : MonoBehaviour
 
     private bool isShown = false;
     private Rigidbody2D rigidBody;
-
+    private GameManagement game;
     // Start is called before the first frame update
     void Start()
     {
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         rigidBody = GetComponent<Rigidbody2D>();
         StartCoroutine(Rise(riseDistance, riseTime));
     }
@@ -55,12 +56,14 @@ public class Mushroom : MonoBehaviour
             {
                 case MushroomType.normal:
                     collision.gameObject.GetComponent<MarioController>().big();
+                    game.updateScore(2000);
                     break;
                 case MushroomType.green:
-
+                    game.updateScore(2000);
                     break;
                 case MushroomType.star:
                     collision.gameObject.GetComponent<MarioController>().invincible();
+                    game.updateScore(2000);
                     break;
             }
             Destroy(gameObject);

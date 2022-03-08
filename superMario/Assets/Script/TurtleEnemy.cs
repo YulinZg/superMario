@@ -23,11 +23,12 @@ public class TurtleEnemy : EnemyController
     public bool isShellMoving = false;
 
     private float secondsPerFrame;
-    
+    private GameManagement game;
     // Start is called before the first frame update
     void Start()
     {
         marioScript = GameObject.FindWithTag("Player").GetComponent<MarioController>();
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         secondsPerFrame = 1.0f / framesPerSecond;
         Invoke("NextFrame", secondsPerFrame);
     }
@@ -48,7 +49,8 @@ public class TurtleEnemy : EnemyController
             shellMove();
             //checkDir.x = shellMoveDir.x;
         }
-
+        if (transform.position.y < -11)
+            destroy();
         //checkTile();
         //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
     }
@@ -58,11 +60,13 @@ public class TurtleEnemy : EnemyController
         col.offset = new Vector2(0, -0.06f);
         isShell = true;
         mySpriteRenderer.sprite = shellAnim;
+        game.updateScore(100);
         CancelInvoke();
     }
 
     public void canShellMove()
     {
+        game.updateScore(100);
         collisionLayer = 1 << LayerMask.NameToLayer("Ground");
         checkDir.x = shellMoveDir.x;
         isShellMoving = true;

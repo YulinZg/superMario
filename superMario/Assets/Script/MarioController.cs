@@ -44,6 +44,8 @@ public class MarioController : MonoBehaviour
     public Sprite midSprite;
     public GameObject fireBall;
 
+    private GameManagement game;
+
 
     //private enum Status
     //{
@@ -58,15 +60,15 @@ public class MarioController : MonoBehaviour
     //private Status statu;
     void Start()
     {
-
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
     }
 
     private void FixedUpdate()
     {
         if (!isDead && !isBlink)
         {
-            move(dir.x);
             modifyPhysics();
+            move(dir.x);
         }
 
     }
@@ -75,18 +77,26 @@ public class MarioController : MonoBehaviour
     {
         if (!isDead && !isBlink)
         {
-            if (Mathf.Abs(rid.velocity.x) <= 0.2 && onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("dead"))
+            if ((Mathf.Abs(rid.velocity.x) <= 0.2 && onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("dead")) || (animator.GetCurrentAnimatorStateInfo(0).IsName("jump") && onGround ))
                 animator.Play("idle");
-
+            
+            
             dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             isOnGround();
             jump();
             checkDamage();
 
-            if (canFire && Input.GetKeyDown(KeyCode.X))
+            if (canFire && Input.GetKeyDown(KeyCode.LeftShift))
             {
                 Instantiate(fireBall, transform.position + new Vector3(0,0.1f,0), Quaternion.identity);
             }
+        }
+
+        if(transform.position.y < -11)
+        {
+            isDead = true;
+            Destroy(gameObject);
+            game.showGameOver();
         }
 
     }
@@ -113,12 +123,13 @@ public class MarioController : MonoBehaviour
         }
         else
         {
+            game.showGameOver();
             isDead = true;
             rid.velocity = new Vector2(0, 0);
             col.enabled = false;
             animator.Play("dead");
             rid.AddForce(Vector2.up * 6, ForceMode2D.Impulse);
-            Debug.Log("die");
+            //Debug.Log("die");
         }
 
     }
@@ -135,8 +146,8 @@ public class MarioController : MonoBehaviour
     }
     private void move(float dir)
     {
+        rid.AddForce(Vector2.right * dir * moveSpeed);
         
-            rid.AddForce(Vector2.right * dir * moveSpeed);
             if (Mathf.Abs(rid.velocity.x) > 0.2 && onGround)
                 animator.SetBool("isRunning", true);
             else if (Mathf.Abs(rid.velocity.x) <= 0.2 && onGround)
@@ -157,7 +168,7 @@ public class MarioController : MonoBehaviour
     {
         if (onGround && Input.GetButtonDown("Jump"))
         {
-            animator.Play("jump");
+            
             rid.velocity = new Vector2(rid.velocity.x, 0);
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -165,8 +176,10 @@ public class MarioController : MonoBehaviour
 
     private void isOnGround()
     {
-        onGround = Physics2D.Raycast(transform.position + new Vector3(-0.32f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
-                   Physics2D.Raycast(transform.position + new Vector3(0.3f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+        onGround = Physics2D.Raycast(transform.position + new Vector3(-0.27f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+                   Physics2D.Raycast(transform.position + new Vector3(0.25f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+        if(!onGround)
+            animator.Play("jump");
         //Debug.DrawRay(transform.position, Vector2.down * groundLength);
         animator.SetBool("isOnGround", onGround);
     }
@@ -176,8 +189,8 @@ public class MarioController : MonoBehaviour
         isChangingDir = (dir.x > 0 && rid.velocity.x < 0) || (dir.x < 0 && rid.velocity.x > 0) && onGround;
         if (onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
-            rid.gravityScale = gravity;
-            moveSpeed = 10f;
+           
+            //moveSpeed = 10f;
             if (isChangingDir)
             {
                 rid.drag = linearDrag;
@@ -187,19 +200,20 @@ public class MarioController : MonoBehaviour
             {
                 rid.drag = 0f;
             }
+            rid.gravityScale = gravity;
         }
         else if (!onGround)
         {
             rid.gravityScale = gravity * 1.5f;
             rid.drag = linearDrag * 0.15f;
-            moveSpeed = 3f;
-            if (rid.velocity.y < 0)
+            //moveSpeed = 3f;
+            if (rid.velocity.y < 0 && rid.velocity.y > -7)
             {
                 rid.gravityScale = gravity * fallMultiplier;
             }
             else if (rid.velocity.y > 0 && !Input.GetButton("Jump"))
             {
-                rid.gravityScale = gravity * fallMultiplier / 2;
+                rid.gravityScale = gravity * fallMultiplier / 1.5f;
             }
         }
     }
