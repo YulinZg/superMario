@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2145287553
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300010, guid: bb3bf7cee90eb4d4f84df0690e0752e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isBig: 0
+  isBlink: 0
   moveSpeed: 10
   jumpForce: 10
   dir: {x: 0, y: 0}
@@ -166,6 +168,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mySprite: {fileID: 404270078110658657}
+  bigMario: {fileID: 9100000, guid: 8c4742f7f0b7a454ba95069d4d0a49d5, type: 2}
+  smallMario: {fileID: 9100000, guid: 438dacc7158fc2e46ba5980437051c6c, type: 2}
+  midSprite: {fileID: 21300014, guid: dc05d98e62fb948d39e8dc7cdc29254e, type: 3}
 --- !u!95 &404270078110658589
 Animator:
   serializedVersion: 3

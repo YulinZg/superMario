@@ -30,6 +30,7 @@ public class Flower : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.GetComponent<MarioController>().changeToFire();
             Destroy(gameObject);
         }
     }

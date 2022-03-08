@@ -47,20 +47,21 @@ public class Mushroom : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !collision.gameObject.GetComponent<MarioController>().isBig)
         {
+            
             switch (mushroomType)
             {
                 case MushroomType.normal:
-                    
+                    collision.gameObject.GetComponent<MarioController>().big();
                     break;
                 case MushroomType.green:
                     
                     break;
                 case MushroomType.star:
-                    
+                    collision.gameObject.GetComponent<MarioController>().invincible();
                     break;
             }
             Destroy(gameObject);

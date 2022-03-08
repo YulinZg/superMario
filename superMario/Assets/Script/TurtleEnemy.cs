@@ -77,8 +77,7 @@ public class TurtleEnemy : EnemyController
         {
             marioScript.die();
         }
-
-        if (collision.gameObject.tag.Equals("Player") && isShell)
+        else if (collision.gameObject.tag.Equals("Player") && isShell)
         {
             canShellMove();
             gameObject.layer = LayerMask.NameToLayer("shell");
@@ -107,6 +106,29 @@ public class TurtleEnemy : EnemyController
         {
             changeDir();
         }
+    }
+
+    public void fireDie()
+    {
+        mySpriteRenderer.sprite = shellAnim;
+        CancelInvoke();
+        isShell = true;
+        rid.velocity = new Vector2(0, 0);
+        rid.AddForce(Vector2.up * 3, ForceMode2D.Impulse);
+        gameObject.transform.localScale = new Vector3 (1, -1, 1);
+        col.enabled = false;
+        Invoke("destroy", 2f);
+    }
+
+    private void destroy()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player") && collision.gameObject.GetComponent<MarioController>().isInvincible)
+            fireDie();
     }
     // Update is called once per frame
 }
