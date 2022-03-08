@@ -50,13 +50,13 @@ public class Brick : MonoBehaviour
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
-            GetComponentInParent<Rigidbody2D>().AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             isEmpty = true;
             spriteRenderer.sprite = emptySprite;
             Invoke(nameof(Drop), dropTime);
             Invoke(nameof(SetStatic), setStaticTime);
         }
-        else if (collision.gameObject.CompareTag("enemy"))
+        else if (!isEmpty && collision.gameObject.CompareTag("enemy"))
         {
             collision.GetComponent<normalEnemy>().die();
         }

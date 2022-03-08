@@ -56,16 +56,20 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Flower.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\MarioController.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
+    <Compile Include="Assets\Script\BreakableBrick.cs" />
     <Compile Include="Assets\Script\Brick.cs" />
     <Compile Include="Assets\Script\Coin.cs" />
-    <Compile Include="Assets\Script\normalEnemy.cs" />
-    <Compile Include="Assets\Script\TurtleEnemy.cs" />
     <Compile Include="Assets\Script\FloatingCoin.cs" />
     <Compile Include="Assets\Script\Mushroom.cs" />
-    <Compile Include="Assets\Script\Flower.cs" />
+    <Compile Include="Assets\Script\normalEnemy.cs" />
+    <Compile Include="Assets\Script\HiddenBrick.cs" />
+    <Compile Include="Assets\Script\TurtleEnemy.cs" />
+    <Compile Include="Assets\Script\CoinBrick.cs" />
+    <Compile Include="Assets\Script\BrickFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
