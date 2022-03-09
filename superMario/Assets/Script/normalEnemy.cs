@@ -71,10 +71,11 @@ public class normalEnemy : EnemyController
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && !collision.gameObject.GetComponent<MarioController>().isInvincible)
         {
             marioScript.die();
-        }else if ((collision.gameObject.tag.Equals("enemy")))
+        }
+        else if ((collision.gameObject.tag.Equals("enemy")))
         {
             unusualDie();
         }
