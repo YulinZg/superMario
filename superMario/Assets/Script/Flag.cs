@@ -37,7 +37,7 @@ public class Flag : MonoBehaviour
                 game.updateScore(1000);
             collision.gameObject.GetComponent<MarioController>().isTouchFlag = true;
             canMove = true;
-            Debug.Log(11111);
+            //Debug.Log(11111);
         }
     }
 }
