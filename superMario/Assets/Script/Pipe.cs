@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pipe : MonoBehaviour
 {
     public bool isFirst;
+    public Camera cam;
     private MarioController mario;
     private bool canIn = false;
 
@@ -12,6 +13,7 @@ public class Pipe : MonoBehaviour
     void Start()
     {
         mario = GameObject.FindGameObjectWithTag("Player").GetComponent<MarioController>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -19,7 +21,7 @@ public class Pipe : MonoBehaviour
     {
         if (canIn)
         {
-            if (isFirst && Input.GetKeyDown(KeyCode.DownArrow))
+            if (isFirst && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)))
             {
                 mario.isBlink = true;
                 mario.rid.simulated = false;
@@ -55,7 +57,10 @@ public class Pipe : MonoBehaviour
     IEnumerator Move(float distance, float duration)
     {
         if (!isFirst)
+        {
             mario.gameObject.transform.position = new Vector3(156.0f, -2.6f);
+            cam.orthographicSize = 8.0f;
+        }
         float time = 0;
         Vector3 start = mario.gameObject.transform.position;
         while (time < duration)
@@ -65,7 +70,10 @@ public class Pipe : MonoBehaviour
             yield return null;
         }
         if (isFirst)
+        {
+            cam.orthographicSize = 6.5f;
             mario.gameObject.transform.position = new Vector3(-5.5f, -6.5f);
+        }
         mario.rid.simulated = true;
         mario.col.enabled = true;
         mario.tri.enabled = true;

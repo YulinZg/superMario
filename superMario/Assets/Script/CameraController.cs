@@ -32,8 +32,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            targetPos.x = Mathf.Clamp(targetPos.x, 2.5f, 205.5f);
-            targetPos.y = 1.5f;
+            targetPos.x = Mathf.Clamp(targetPos.x, 5.0f, 203.0f);
+            targetPos.y = 3.0f;
             targetPos.z = -10.0f;
         }
         transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
