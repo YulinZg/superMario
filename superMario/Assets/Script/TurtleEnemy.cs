@@ -23,11 +23,12 @@ public class TurtleEnemy : EnemyController
     public bool isShellMoving = false;
 
     private float secondsPerFrame;
-    
+    private GameManagement game;
     // Start is called before the first frame update
     void Start()
     {
         marioScript = GameObject.FindWithTag("Player").GetComponent<MarioController>();
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         secondsPerFrame = 1.0f / framesPerSecond;
         Invoke("NextFrame", secondsPerFrame);
     }
@@ -46,19 +47,14 @@ public class TurtleEnemy : EnemyController
         else if(isShellMoving && isShell)
         {
             shellMove();
+            //rid.velocity = new Vector2(rid.velocity.x, 0);
             //checkDir.x = shellMoveDir.x;
         }
-
         //checkTile();
         //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
     }
     public void die()
     {
-        col.size = new Vector2(col.size.x, 0.61f);
-        col.offset = new Vector2(0, -0.06f);
-        isShell = true;
-        mySpriteRenderer.sprite = shellAnim;
-        CancelInvoke();
         AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
 
@@ -69,10 +65,18 @@ public class TurtleEnemy : EnemyController
 
         audioSource.clip = audioclip;
         audioSource.Play();
+        col.size = new Vector2(col.size.x, 0.61f);
+        col.offset = new Vector2(0, -0.06f);
+        isShell = true;
+        //rid.constraints = RigidbodyConstraints2D.FreezeAll;
+        mySpriteRenderer.sprite = shellAnim;
+        game.updateScore(100);
+        CancelInvoke();
     }
 
     public void canShellMove()
     {
+        game.updateScore(100);
         collisionLayer = 1 << LayerMask.NameToLayer("Ground");
         checkDir.x = shellMoveDir.x;
         isShellMoving = true;
@@ -87,8 +91,7 @@ public class TurtleEnemy : EnemyController
         {
             marioScript.die();
         }
-
-        if (collision.gameObject.tag.Equals("Player") && isShell)
+        else if (collision.gameObject.tag.Equals("Player") && isShell)
         {
             canShellMove();
             gameObject.layer = LayerMask.NameToLayer("shell");
@@ -96,17 +99,6 @@ public class TurtleEnemy : EnemyController
             checkDir.x = collision.gameObject.GetComponent<MarioController>().dir.x;
             if (Mathf.Sign(checkDir.x) != Mathf.Sign(rayOffset.x))
                 rayOffset *= -1;
-
-            AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
-            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-
-            if (audioSource == null)
-            {
-                audioSource = gameObject.AddComponent<AudioSource>();
-            }
-
-            audioSource.clip = audioclip;
-            audioSource.Play();
         }
     }
 
@@ -124,10 +116,54 @@ public class TurtleEnemy : EnemyController
             
         bool isHitEnemy = Physics2D.Raycast(transform.position + rayOffset, checkDir, checkLength, collisionLayer);
         Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
+
         if (isHitEnemy)
         {
             changeDir();
+            AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
         }
+    }
+
+    public void fireDie()
+    {
+        mySpriteRenderer.sprite = shellAnim;
+        CancelInvoke();
+        isShell = true;
+        rid.velocity = new Vector2(0, 0);
+        rid.AddForce(Vector2.up * 3, ForceMode2D.Impulse);
+        gameObject.transform.localScale = new Vector3 (1, -1, 1);
+        col.enabled = false;
+        Invoke("destroy", 2f);
+    }
+
+    private void destroy()
+    {
+        Destroy(gameObject);
+        AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player") && collision.gameObject.GetComponent<MarioController>().isInvincible)
+            fireDie();
     }
     // Update is called once per frame
 }

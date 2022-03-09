@@ -47,13 +47,27 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\GameManagement.cs" />
+     <Compile Include="Assets\Script\FireBall.cs" />
+     <Compile Include="Assets\Script\Flower.cs" />
      <Compile Include="Assets\Script\EnemyController.cs" />
      <Compile Include="Assets\Script\MarioController.cs" />
+     <Compile Include="Assets\Script\Door.cs" />
      <Compile Include="Assets\Script\CameraController.cs" />
+     <Compile Include="Assets\Script\BreakableBrick.cs" />
      <Compile Include="Assets\Script\Brick.cs" />
+     <Compile Include="Assets\Script\BrickFragment.cs" />
+     <Compile Include="Assets\Script\KillEnemy.cs" />
+     <Compile Include="Assets\Script\Flag.cs" />
      <Compile Include="Assets\Script\Coin.cs" />
+     <Compile Include="Assets\Script\FloatingCoin.cs" />
+     <Compile Include="Assets\Script\Mushroom.cs" />
      <Compile Include="Assets\Script\normalEnemy.cs" />
+     <Compile Include="Assets\Script\HiddenBrick.cs" />
      <Compile Include="Assets\Script\TurtleEnemy.cs" />
+     <Compile Include="Assets\Script\CoinBrick.cs" />
+     <Compile Include="Assets\Script\Pipe.cs" />
+     <Compile Include="Assets\Script\FallArea.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/2020.3.29f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public float upForce;
     public GameObject obj;
+    public GameObject superObj;
     public float upOffSet;
     public Sprite[] sprites;
     public Sprite emptySprite;
@@ -16,14 +18,14 @@ public class Brick : MonoBehaviour
     private float timer = 0;
     private int index = 0;
     private bool isEmpty = false;
-    private AudioSource source;
+    private MarioController player;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
-        source = GetComponent<AudioSource>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<MarioController>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class Brick : MonoBehaviour
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
+            rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             isEmpty = true;
             spriteRenderer.sprite = emptySprite;
             Invoke(nameof(Drop), dropTime);
@@ -64,14 +67,19 @@ public class Brick : MonoBehaviour
 
             audioSource.clip = audioclip;
             audioSource.Play();
-
         }
-
+        else if (collision.gameObject.CompareTag("enemy"))
+        {
+            collision.GetComponent<normalEnemy>().unusualDie();
+        }
     }
 
     void Drop()
     {
-        Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
+        if (!player.isBig)
+            Instantiate(obj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
+        else
+            Instantiate(superObj, transform.position + new Vector3(0, upOffSet, 0), Quaternion.identity);
     }
 
     void SetStatic()
