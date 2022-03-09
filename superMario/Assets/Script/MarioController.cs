@@ -155,14 +155,17 @@ public class MarioController : MonoBehaviour
 
     private void changeToSmall()
     {
-
-        col.size = new Vector2(0.6591296f, 0.7877641f);
-        col.offset = new Vector2(-0.01010871f, -0.007165909f);
         isBig = false;
+        col.size = new Vector2(0.5f, 0.8f);
+        col.offset = new Vector2(0, 0);
+        tri.size = new Vector2(0.7f, 0.6f);
+        tri.offset = new Vector2(0, -0.1f);
         col.enabled = true;
+        tri.enabled = true;
         rid.simulated = true;
         animator.runtimeAnimatorController = smallMario;
     }
+
     private void move(float dir)
     {
         rid.AddForce(Vector2.right * dir * moveSpeed);
@@ -197,8 +200,8 @@ public class MarioController : MonoBehaviour
     {
         if (!isBig)
         {
-            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.27f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
-                   Physics2D.Raycast(transform.position + new Vector3(0.25f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.275f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+                   Physics2D.Raycast(transform.position + new Vector3(0.255f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
         }
         else
         {
@@ -348,9 +351,9 @@ public class MarioController : MonoBehaviour
 
     private void changeToBig()
     {
-        col.size = new Vector2(0.55f, 1.2f);
+        col.size = new Vector2(0.5f, 1.2f);
         col.offset = new Vector2(0, 0.3f);
-        tri.size = new Vector2(0.65f, 1f);
+        tri.size = new Vector2(0.7f, 1f);
         tri.offset = new Vector2(0, 0.2f);
         col.enabled = true;
         tri.enabled = true;
