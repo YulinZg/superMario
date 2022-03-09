@@ -55,6 +55,16 @@ public class TurtleEnemy : EnemyController
     }
     public void die()
     {
+        AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
         col.size = new Vector2(col.size.x, 0.61f);
         col.offset = new Vector2(0, -0.06f);
         isShell = true;
@@ -106,9 +116,20 @@ public class TurtleEnemy : EnemyController
             
         bool isHitEnemy = Physics2D.Raycast(transform.position + rayOffset, checkDir, checkLength, collisionLayer);
         Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
+
         if (isHitEnemy)
         {
             changeDir();
+            AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
         }
     }
 
@@ -127,6 +148,16 @@ public class TurtleEnemy : EnemyController
     private void destroy()
     {
         Destroy(gameObject);
+        AudioClip audioclip = Resources.Load("Audios/kick") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

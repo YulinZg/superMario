@@ -28,6 +28,16 @@ public class CoinBrick : MonoBehaviour
     {
         if (!isEmpty && collision.gameObject.CompareTag("Player"))
         {
+            AudioClip audioclip = Resources.Load("Audios/Gold") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
             if (number > 1)
             {
                 trigger.enabled = false;

@@ -18,6 +18,7 @@ public class normalEnemy : EnemyController
 
     private float secondsPerFrame;
     private GameManagement game;
+    private AudioSource TheDie;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class normalEnemy : EnemyController
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         secondsPerFrame = 1.0f / framesPerSecond;
         Invoke("NextFrame", secondsPerFrame);
+        TheDie = GetComponent<AudioSource>();
     }
 
     void NextFrame()
@@ -41,6 +43,7 @@ public class normalEnemy : EnemyController
     }
     public void die()
     {
+        TheDie.Play();
         game.updateScore(100);
         moveSpeed = 0;
         mySpriteRenderer.sprite = daedAnim;
@@ -52,6 +55,7 @@ public class normalEnemy : EnemyController
 
     public void unusualDie()
     {
+        TheDie.Play();
         moveSpeed = 0;
         game.updateScore(100);
         //mySpriteRenderer.sprite = daedAnim;

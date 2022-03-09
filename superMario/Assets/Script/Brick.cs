@@ -57,6 +57,16 @@ public class Brick : MonoBehaviour
             spriteRenderer.sprite = emptySprite;
             Invoke(nameof(Drop), dropTime);
             Invoke(nameof(SetStatic), setStaticTime);
+            AudioClip audioclip = Resources.Load("Audios/Gold") as AudioClip;
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            audioSource.clip = audioclip;
+            audioSource.Play();
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {

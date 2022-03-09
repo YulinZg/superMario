@@ -24,12 +24,14 @@ public class Mushroom : MonoBehaviour
     private bool isShown = false;
     private Rigidbody2D rigidBody;
     private GameManagement game;
+   
     // Start is called before the first frame update
     void Start()
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         rigidBody = GetComponent<Rigidbody2D>();
         StartCoroutine(Rise(riseDistance, riseTime));
+        
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class Mushroom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+          
             switch (mushroomType)
             {
                 case MushroomType.normal:

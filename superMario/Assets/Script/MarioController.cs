@@ -64,6 +64,17 @@ public class MarioController : MonoBehaviour
     void Start()
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
+        AudioClip audioclip = Resources.Load("Audios/Nintendo - Super Mario bros. theme") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     private void FixedUpdate()
@@ -121,6 +132,16 @@ public class MarioController : MonoBehaviour
 
     public void die()
     {
+        AudioClip audioclip = Resources.Load("Audios/Die") as AudioClip;
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioclip;
+        audioSource.Play();
         if (isBig)
         {
             if (canFire)

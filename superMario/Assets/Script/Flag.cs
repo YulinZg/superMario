@@ -8,10 +8,12 @@ public class Flag : MonoBehaviour
     public GameObject flag;
     public bool canMove;
     public GameManagement game;
+    private AudioSource TheWin;
     // Start is called before the first frame update
     void Start()
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
+        TheWin = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            TheWin.Play();
             if (collision.gameObject.transform.position.y >= 5.5)
                 game.updateScore(5000);
             else if (collision.gameObject.transform.position.y >= 3)
