@@ -10,6 +10,7 @@ public class GameManagement : MonoBehaviour
     public Text score;
     public Text coins;
     public GameObject panel;
+    public GameObject winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,5 +47,10 @@ public class GameManagement : MonoBehaviour
     public void showGameOver()
     {
         panel.SetActive(true);
+    }
+
+    public void showWin()
+    {
+        winPanel.SetActive(true);
     }
 }

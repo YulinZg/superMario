@@ -58,9 +58,9 @@ public class Brick : MonoBehaviour
             Invoke(nameof(Drop), dropTime);
             Invoke(nameof(SetStatic), setStaticTime);
         }
-        else if (!isEmpty && collision.gameObject.CompareTag("enemy"))
+        else if (collision.gameObject.CompareTag("enemy"))
         {
-            collision.GetComponent<normalEnemy>().die();
+            collision.GetComponent<normalEnemy>().unusualDie();
         }
     }
 

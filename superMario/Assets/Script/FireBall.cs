@@ -25,9 +25,16 @@ public class FireBall : MonoBehaviour
     {
         marioScript = GameObject.FindWithTag("Player").GetComponent<MarioController>();
         if(marioScript.gameObject.transform.localScale.x > 0)
+        {
+            rid.velocity = new Vector2(marioScript.gameObject.GetComponent<Rigidbody2D>().velocity.x, 0);
             rid.AddForce(Vector3.right * froce, ForceMode2D.Impulse);
+        }  
         else if (marioScript.gameObject.transform.localScale.x < 0)
+        {
+            rid.velocity = new Vector2(marioScript.gameObject.GetComponent<Rigidbody2D>().velocity.x, 0);
             rid.AddForce(Vector3.left * froce, ForceMode2D.Impulse);
+        }
+            
         rid.AddForce(Vector3.up * froce/2, ForceMode2D.Impulse);
         secondsPerFrame = 1.0f / framesPerSecond;
         Invoke("NextFrame", secondsPerFrame);

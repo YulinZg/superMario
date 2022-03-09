@@ -19,7 +19,7 @@ public class Pipe : MonoBehaviour
     {
         if (canIn)
         {
-            if (isFirst && Input.GetKeyDown(KeyCode.S))
+            if (isFirst && Input.GetKeyDown(KeyCode.DownArrow))
             {
                 mario.isBlink = true;
                 mario.rid.simulated = false;

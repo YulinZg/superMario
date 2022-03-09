@@ -47,6 +47,7 @@ public class TurtleEnemy : EnemyController
         else if(isShellMoving && isShell)
         {
             shellMove();
+            //rid.velocity = new Vector2(rid.velocity.x, 0);
             //checkDir.x = shellMoveDir.x;
         }
         //checkTile();
@@ -57,6 +58,7 @@ public class TurtleEnemy : EnemyController
         col.size = new Vector2(col.size.x, 0.61f);
         col.offset = new Vector2(0, -0.06f);
         isShell = true;
+        //rid.constraints = RigidbodyConstraints2D.FreezeAll;
         mySpriteRenderer.sprite = shellAnim;
         game.updateScore(100);
         CancelInvoke();

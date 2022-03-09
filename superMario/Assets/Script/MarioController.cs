@@ -14,6 +14,8 @@ public class MarioController : MonoBehaviour
     public bool isBlink = false;
     public bool canFire = false;
     public bool isInvincible = false;
+    public bool isTouchFlag = false;
+    public bool isAutoMove = false;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
@@ -41,8 +43,9 @@ public class MarioController : MonoBehaviour
     public SpriteRenderer mySprite;
     public RuntimeAnimatorController bigMario;
     public RuntimeAnimatorController smallMario;
-    public Sprite midSprite;
+    public RuntimeAnimatorController midMario;
     public GameObject fireBall;
+    public BoxCollider2D flagCol;
 
     private GameManagement game;
 
@@ -65,17 +68,33 @@ public class MarioController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead && !isBlink)
+        if (isAutoMove)
+        {
+            rid.AddForce(Vector2.right * 6);
+            dir = new Vector2(0, 0);
+            modifyPhysics();
+            return;
+        }
+        else if (!isDead && !isBlink && !isTouchFlag)
         {
             modifyPhysics();
             move(dir.x);
         }
-
+        else if(isTouchFlag && onGround)
+        {
+            isTouchFlag = false;
+            flagCol.enabled = false;
+            flagCol.gameObject.GetComponent<Flag>().canMove = false;
+            rid.AddForce(Vector2.up * 16, ForceMode2D.Impulse);
+            rid.AddForce(Vector2.right * 6, ForceMode2D.Impulse);
+            isAutoMove = true;
+        }
+        
     }
     // Update is called once per frame
     void Update()
     {
-        if (!isDead && !isBlink)
+        if (!isDead && !isBlink && !isTouchFlag)
         {
             if ((Mathf.Abs(rid.velocity.x) <= 0.2 && onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("dead")) || (animator.GetCurrentAnimatorStateInfo(0).IsName("jump") && onGround ))
                 animator.Play("idle");
@@ -91,6 +110,9 @@ public class MarioController : MonoBehaviour
                 Instantiate(fireBall, transform.position + new Vector3(0,0.1f,0), Quaternion.identity);
             }
         }
+        if(isTouchFlag)
+            isOnGround();
+
     }
 
     public void die()
@@ -233,7 +255,7 @@ public class MarioController : MonoBehaviour
                     if (hit.collider.CompareTag("enemy"))
                         hit.collider.GetComponent<normalEnemy>().die();
                     rid.velocity = new Vector2(rid.velocity.x, 0);
-                    rid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+                    rid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
                 }
                 if (hit.collider && hit.collider.GetComponent<TurtleEnemy>())
                 {
@@ -257,7 +279,7 @@ public class MarioController : MonoBehaviour
                         hit.collider.GetComponent<TurtleEnemy>().canShellMove();
                     }
                     rid.velocity = new Vector2(rid.velocity.x, 0);
-                    rid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+                    rid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
                 }
             }
         }
@@ -277,18 +299,35 @@ public class MarioController : MonoBehaviour
         isBlink = false;
         mySprite.enabled = true;
     }
+
+    IEnumerator DoBigBlinks(int numBlinks, float time)
+    {
+        isBlink = true;
+        for (int i = 0; i < numBlinks; i++)
+        {
+            mySprite.enabled = !mySprite.enabled;
+            if (i % 3 == 0)
+                animator.runtimeAnimatorController = smallMario;
+            else if (i % 3 == 1)
+                animator.runtimeAnimatorController = midMario;
+            else if (i % 3 == 2)
+                animator.runtimeAnimatorController = bigMario;
+            yield return new WaitForSeconds(time);
+        }
+        animator.runtimeAnimatorController = bigMario;
+        mySprite.enabled = true;
+        isBlink = false;
+    }
     public void big()
     {
         if (!isBig)
         {
-            //animator.Play("dead");
-            //animator.Play("idle");
             isBig = true;
             col.enabled = false;
             tri.enabled = false;
             rid.simulated = false;
             rid.velocity = new Vector2(0, 0);
-            StartCoroutine(DoBlinks(40, 1.5f / 40));
+            StartCoroutine(DoBigBlinks(30, 1.5f / 30));
             Invoke("changeToBig", 1.7f);
         }
 
