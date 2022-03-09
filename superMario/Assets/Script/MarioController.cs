@@ -200,8 +200,8 @@ public class MarioController : MonoBehaviour
     {
         if (!isBig)
         {
-            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.27f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
-                   Physics2D.Raycast(transform.position + new Vector3(0.25f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.275f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+                   Physics2D.Raycast(transform.position + new Vector3(0.255f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
         }
         else
         {
