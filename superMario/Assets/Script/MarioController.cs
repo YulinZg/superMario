@@ -46,6 +46,20 @@ public class MarioController : MonoBehaviour
     public RuntimeAnimatorController midMario;
     public GameObject fireBall;
     public BoxCollider2D flagCol;
+    public AudioSource marioEffect;
+    public AudioClip pipe;
+    public AudioClip jumpEffect;
+    public AudioClip gameOver;
+    public AudioClip killEnemy;
+    public AudioClip invincibleEffect;
+    public AudioClip throughFire;
+    public AudioClip eat;
+    public AudioClip eatCoins;
+    public AudioClip brickE;
+    public AudioClip breakBrick;
+    public AudioClip flag;
+    public AudioClip musAppear;
+    public AudioSource bgm;
 
     private GameManagement game;
 
@@ -112,6 +126,8 @@ public class MarioController : MonoBehaviour
             if (canFire && Input.GetKeyDown(KeyCode.LeftShift))
             {
                 Instantiate(fireBall, transform.position + new Vector3(0,0.1f,0), Quaternion.identity);
+                marioEffect.clip = throughFire;
+                marioEffect.Play();
             }
         }
         if(isTouchFlag)
@@ -135,13 +151,18 @@ public class MarioController : MonoBehaviour
                 col.enabled = false;
                 tri.enabled = false;
                 rid.simulated = false;
-                StartCoroutine(DoBlinks(40, 1.5f / 40));
-                Invoke("changeToSmall", 1.7f);
+                marioEffect.clip = pipe;
+                marioEffect.Play();
+                StartCoroutine(DoBlinks(40, 1f / 40));
+                Invoke("changeToSmall", 1.1f);
             }
         }
         else
         {
             game.showGameOver();
+            marioEffect.clip = gameOver;
+            marioEffect.Play();
+            bgm.Stop();
             isDead = true;
             rid.velocity = new Vector2(0, 0);
             col.enabled = false;
@@ -190,7 +211,12 @@ public class MarioController : MonoBehaviour
     {
         if (onGround && Input.GetButtonDown("Jump"))
         {
-            
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
+            {
+                marioEffect.clip = jumpEffect;
+                marioEffect.Play();
+            }
+
             rid.velocity = new Vector2(rid.velocity.x, 0);
             rid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -242,6 +268,12 @@ public class MarioController : MonoBehaviour
             {
                 rid.gravityScale = gravity * fallMultiplier;
             }
+            else if (rid.velocity.y < -6.8)
+            {
+                //rid.velocity = new Vector2(10 * dir.x, rid.velocity.y);
+                rid.gravityScale = 1;
+                rid.drag = 0f;
+            }
             else if (rid.velocity.y > 0 && !Input.GetButton("Jump"))
             {
                 rid.gravityScale = gravity * fallMultiplier / 1.5f;
@@ -269,14 +301,23 @@ public class MarioController : MonoBehaviour
                 if (hit.collider && hit.collider.GetComponent<normalEnemy>())
                 {
                     if (hit.collider.CompareTag("enemy"))
+                    {
                         hit.collider.GetComponent<normalEnemy>().die();
+                        marioEffect.clip = killEnemy;
+                        marioEffect.Play();
+                    }
+                        
                     rid.velocity = new Vector2(rid.velocity.x, 0);
                     rid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
                 }
                 if (hit.collider && hit.collider.GetComponent<TurtleEnemy>())
                 {
                     if (hit.collider.CompareTag("enemy") && !hit.collider.GetComponent<TurtleEnemy>().isShell)
+                    {
                         hit.collider.GetComponent<TurtleEnemy>().die();
+                        marioEffect.clip = killEnemy;
+                        marioEffect.Play();
+                    }   
                     else if (hit.collider.CompareTag("enemy") && hit.collider.GetComponent<TurtleEnemy>().isShell)
                     {
                         if (i >= 10)
@@ -289,6 +330,8 @@ public class MarioController : MonoBehaviour
                             hit.collider.GetComponent<TurtleEnemy>().shellMoveDir = new Vector3(-1, 0, 0);
                             hit.collider.GetComponent<TurtleEnemy>().checkDir.x = -1;
                         }
+                        marioEffect.clip = killEnemy;
+                        marioEffect.Play();
                         hit.collider.gameObject.layer = LayerMask.NameToLayer("shell");
                         if (Mathf.Sign(hit.collider.GetComponent<TurtleEnemy>().checkDir.x) != Mathf.Sign(hit.collider.GetComponent<TurtleEnemy>().rayOffset.x))
                             hit.collider.GetComponent<TurtleEnemy>().rayOffset *= -1;
@@ -338,13 +381,15 @@ public class MarioController : MonoBehaviour
     {
         if (!isBig)
         {
+            marioEffect.clip = eat;
+            marioEffect.Play();
             isBig = true;
             col.enabled = false;
             tri.enabled = false;
             rid.simulated = false;
             rid.velocity = new Vector2(0, 0);
-            StartCoroutine(DoBigBlinks(30, 1.5f / 30));
-            Invoke("changeToBig", 1.7f);
+            StartCoroutine(DoBigBlinks(30, 1f / 30));
+            Invoke("changeToBig", 1.1f);
         }
 
     }
@@ -367,6 +412,8 @@ public class MarioController : MonoBehaviour
         if (isBig)
         {
             canFire = true;
+            marioEffect.clip = eat;
+            marioEffect.Play();
             mySprite.color = Color.red;      
         }
     }
@@ -392,6 +439,9 @@ public class MarioController : MonoBehaviour
     public void invincible()
     {
         isInvincible = true;
+        marioEffect.clip = invincibleEffect;
+        marioEffect.Play();
+        bgm.Stop();
         StartCoroutine(invincibleBlinks(400, 20f / 400));
     }
 }

@@ -27,6 +27,9 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            GameObject mario = GameObject.FindGameObjectWithTag("Player");
+            mario.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().flag;
+            mario.GetComponent<AudioSource>().Play();
             if (collision.gameObject.transform.position.y >= 5.5)
                 game.updateScore(5000);
             else if (collision.gameObject.transform.position.y >= 3)

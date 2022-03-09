@@ -23,6 +23,9 @@ public class Pipe : MonoBehaviour
         {
             if (isFirst && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)))
             {
+                GameObject marioa = GameObject.FindGameObjectWithTag("Player");
+                marioa.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().pipe;
+                marioa.GetComponent<AudioSource>().Play();
                 mario.isBlink = true;
                 mario.rid.simulated = false;
                 mario.col.enabled = false;
@@ -32,6 +35,9 @@ public class Pipe : MonoBehaviour
             }
             if (!isFirst)
             {
+                GameObject marioa = GameObject.FindGameObjectWithTag("Player");
+                marioa.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().pipe;
+                marioa.GetComponent<AudioSource>().Play();
                 mario.isBlink = true;
                 mario.rid.simulated = false;
                 mario.col.enabled = false;

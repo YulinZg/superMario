@@ -16,7 +16,12 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject mario = GameObject.FindGameObjectWithTag("Player");
+        mario.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().eatCoins;
+        mario.GetComponent<AudioSource>().Play();
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
+        game.updateCoins(1);
+        game.updateScore(200);
         spriteRenderer = GetComponent<SpriteRenderer>();
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
         Invoke(nameof(Disappear), disappearTime);
@@ -31,8 +36,6 @@ public class Coin : MonoBehaviour
 
     void Disappear()
     {
-        game.updateCoins(1);
-        game.updateScore(200);
         Destroy(gameObject);
     }
 
