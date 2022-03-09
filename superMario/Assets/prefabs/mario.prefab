@@ -160,7 +160,7 @@ MonoBehaviour:
   linearDrag: 4
   gravity: 1
   fallMultiplier: 4
-  maxSpeed: 7
+  maxSpeed: 6
   onGround: 0
   groundLength: 0.6
   col: {fileID: 774177837919279172}
