@@ -8,12 +8,18 @@ public class Pipe : MonoBehaviour
     public Camera cam;
     private MarioController mario;
     private bool canIn = false;
+    public AudioSource music;
+    public AudioClip pipe;
 
     // Start is called before the first frame update
     void Start()
     {
         mario = GameObject.FindGameObjectWithTag("Player").GetComponent<MarioController>();
         cam = Camera.main;
+        music = gameObject.AddComponent<AudioSource>();
+        music.playOnAwake = false;
+        pipe = Resources.Load<AudioClip>("pipe");
+        music.clip = pipe;
     }
 
     // Update is called once per frame
@@ -29,6 +35,7 @@ public class Pipe : MonoBehaviour
                 mario.tri.enabled = false;
                 mario.rid.velocity = Vector2.zero;
                 StartCoroutine(Move(-2.0f, 2.0f));
+                music.Play();
             }
             if (!isFirst)
             {
@@ -38,6 +45,7 @@ public class Pipe : MonoBehaviour
                 mario.tri.enabled = false;
                 mario.rid.velocity = Vector2.zero;
                 StartCoroutine(Move(2.0f, 2.0f));
+                music.Play();
             }
         }
     }

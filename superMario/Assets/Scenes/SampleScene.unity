@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &44996374
@@ -8191,6 +8195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &109693672
@@ -8305,6 +8313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &148434962
@@ -14218,6 +14230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &195636592
@@ -14275,6 +14291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &210953861
@@ -14503,6 +14523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &263838823
@@ -14630,6 +14654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &307553762
@@ -14687,6 +14715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &310793103
@@ -14954,7 +14986,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 93
+  m_RootOrder: 94
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &383266506
 BoxCollider2D:
@@ -15151,6 +15183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &441367975
@@ -15208,6 +15244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &497682361
@@ -15282,6 +15322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFirst: 1
   cam: {fileID: 0}
+  music: {fileID: 0}
+  pipe: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -15495,6 +15537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFirst: 0
   cam: {fileID: 0}
+  music: {fileID: 0}
+  pipe: {fileID: 0}
 --- !u!61 &608771028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16261,6 +16305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &650877159
@@ -16375,6 +16423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &711387894
@@ -16719,6 +16771,133 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695e68105cf844f4c92c476dcd55bf00, type: 3}
+--- !u!1 &778234519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778234521}
+  - component: {fileID: 778234520}
+  m_Layer: 6
+  m_Name: smash
+  m_TagString: smash
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &778234520
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778234519}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &778234521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778234519}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 6.07, y: -16.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 93
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793357709
 GameObject:
   m_ObjectHideFlags: 0
@@ -16856,6 +17035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &835827015
@@ -16913,6 +17096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &848666801
@@ -17027,6 +17214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &857627110
@@ -17302,6 +17493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &897601249
@@ -17617,6 +17812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &974249590
@@ -17911,6 +18110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &1078148200
@@ -17968,6 +18171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &1127867607
@@ -19052,6 +19259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &1365165841
@@ -19195,6 +19406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &1409374499
@@ -19309,6 +19524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &1419639619 stripped
@@ -19371,6 +19590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &1466791198
@@ -20348,6 +20571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &1788074503
@@ -20601,6 +20828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &1913782535
@@ -20737,6 +20968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1 &1974385792
@@ -21190,6 +21425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &2142972531
@@ -21361,6 +21600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableBrick
       objectReference: {fileID: 0}
+    - target: {fileID: 4815587655207748804, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 778234520}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80416f7f11d35534ba6a292ef91abd7a, type: 3}
 --- !u!1001 &5168134150615847182
