@@ -94,6 +94,10 @@ public class MarioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isBig)
+            jumpForce = 13f;
+        else
+            jumpForce = 12.5f;
         if (!isDead && !isBlink && !isTouchFlag)
         {
             if ((Mathf.Abs(rid.velocity.x) <= 0.2 && onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("dead")) || (animator.GetCurrentAnimatorStateInfo(0).IsName("jump") && onGround ))
@@ -191,8 +195,17 @@ public class MarioController : MonoBehaviour
 
     private void isOnGround()
     {
-        onGround = Physics2D.Raycast(transform.position + new Vector3(-0.27f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+        if (!isBig)
+        {
+            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.27f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
                    Physics2D.Raycast(transform.position + new Vector3(0.25f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+        }
+        else
+        {
+            onGround = Physics2D.Raycast(transform.position + new Vector3(-0.30f, -0.1f, 0), Vector2.down, groundLength, groundLayer) ||
+                   Physics2D.Raycast(transform.position + new Vector3(0.28f, -0.1f, 0), Vector2.down, groundLength, groundLayer);
+        }
+
         if(!onGround)
             animator.Play("jump");
         //Debug.DrawRay(transform.position, Vector2.down * groundLength);
@@ -205,7 +218,7 @@ public class MarioController : MonoBehaviour
         if (onGround && !animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
            
-            //moveSpeed = 10f;
+            moveSpeed = 10f;
             if (isChangingDir)
             {
                 rid.drag = linearDrag;
@@ -219,10 +232,10 @@ public class MarioController : MonoBehaviour
         }
         else if (!onGround)
         {
-            rid.gravityScale = gravity * 1.5f;
+            rid.gravityScale = gravity * 1.3f;
             rid.drag = linearDrag * 0.15f;
-            //moveSpeed = 3f;
-            if (rid.velocity.y < 0 && rid.velocity.y > -7)
+            moveSpeed = 5f;
+            if (rid.velocity.y < 0 && rid.velocity.y > -6.8)
             {
                 rid.gravityScale = gravity * fallMultiplier;
             }

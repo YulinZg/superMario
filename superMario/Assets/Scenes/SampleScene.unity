@@ -18409,7 +18409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19961,7 +19961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20124,7 +20124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20653,7 +20653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21376,11 +21376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5168134149558416433, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5
+      value: -5.45
       objectReference: {fileID: 0}
     - target: {fileID: 5168134149558416433, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 5168134149558416433, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21424,7 +21424,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 438dacc7158fc2e46ba5980437051c6c, type: 2}
     - target: {fileID: 5168134149558416463, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
       propertyPath: canFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5168134149558416463, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
       propertyPath: flagCol
@@ -21434,6 +21434,14 @@ PrefabInstance:
       propertyPath: midMario
       value: 
       objectReference: {fileID: 9100000, guid: 6abb34f3bf429c24f81ed73f286b21e0, type: 2}
+    - target: {fileID: 5168134149558416463, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
+      propertyPath: jumpForce
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168134149558416463, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
+      propertyPath: fallMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be9db00ed609bb543a4f818d763cc8e7, type: 3}
 --- !u!1001 &9159872968178253522

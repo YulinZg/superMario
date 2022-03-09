@@ -12,7 +12,7 @@ public class Mushroom : MonoBehaviour
     }
     public MushroomType mushroomType;
 
-    public float moveSpeed = 1f;
+    public float moveSpeed = 4f;
     public Vector3 dir = new Vector3(1, 0, 0);
     public Vector3 rayOffset = new Vector3(0.4f, 0, 0);
     public LayerMask collisionLayer;

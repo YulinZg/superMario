@@ -59,6 +59,7 @@ public class normalEnemy : EnemyController
         rid.AddForce(Vector2.up * 3, ForceMode2D.Impulse);
         gameObject.transform.localScale = new Vector3(1, -1, 1);
         col.enabled = false;
+        CancelInvoke();
         Invoke("destroy", 2f);
     }
     private void destroy()
