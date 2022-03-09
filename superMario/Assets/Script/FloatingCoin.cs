@@ -42,6 +42,9 @@ public class FloatingCoin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
             if (!collision.gameObject.GetComponent<MarioController>().isDead)
             {
+                GameObject mario = GameObject.FindGameObjectWithTag("Player");
+                mario.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().eatCoins;
+                mario.GetComponent<AudioSource>().Play();
                 game.updateCoins(1);
                 game.updateScore(200);
                 Destroy(gameObject);

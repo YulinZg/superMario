@@ -24,9 +24,14 @@ public class Mushroom : MonoBehaviour
     private bool isShown = false;
     private Rigidbody2D rigidBody;
     private GameManagement game;
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        GameObject mario = GameObject.FindGameObjectWithTag("Player");
+        mario.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().musAppear;
+        mario.GetComponent<AudioSource>().Play();
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
         rigidBody = GetComponent<Rigidbody2D>();
         StartCoroutine(Rise(riseDistance, riseTime));

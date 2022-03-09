@@ -21,9 +21,15 @@ public class BreakableBrick : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             if (!collision.gameObject.GetComponent<MarioController>().isBig)
+            {
                 rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+            }
+                
             else
             {
+                GameObject mario = GameObject.FindGameObjectWithTag("Player");
+                mario.GetComponent<AudioSource>().clip = mario.GetComponent<MarioController>().breakBrick;
+                mario.GetComponent<AudioSource>().Play();
                 Instantiate(killEnemy, transform.position + Vector3.up, Quaternion.identity);
                 Instantiate(fragment, transform.position + new Vector3(0.25f, 0, 0), Quaternion.Euler(0, 0, 30.0f));
                 Instantiate(fragment, transform.position + new Vector3(-0.25f, 0, 0), Quaternion.Euler(0, 0, -30.0f));
