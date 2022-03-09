@@ -38,8 +38,6 @@ public class normalEnemy : EnemyController
     {
         move();
         checkCollision();
-        if (transform.position.y < -11)
-            destroy();
     }
     public void die()
     {

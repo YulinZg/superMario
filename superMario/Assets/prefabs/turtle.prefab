@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc133a838bd876a4fb9f04ac2899a82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0
   dir: {x: -1, y: 0, z: 0}
   rayOffset: {x: -0.4, y: 0, z: 0}
   collisionLayer:

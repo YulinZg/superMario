@@ -38,4 +38,12 @@ public class CameraController : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("enemy"))
+        {
+            collision.gameObject.GetComponent<enemy.EnemyController>().moveSpeed = 1f;
+        }
+    }
 }

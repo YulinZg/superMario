@@ -14,12 +14,14 @@ public class CoinBrick : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
     private bool isEmpty = false;
+    private BoxCollider2D trigger;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+        trigger = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,9 +30,11 @@ public class CoinBrick : MonoBehaviour
         {
             if (number > 1)
             {
+                trigger.enabled = false;
                 number--;
                 rigidBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
                 Invoke(nameof(Drop), dropTime);
+                Invoke(nameof(SetTrigger), setStaticTime);
             }
             else 
             {
@@ -56,5 +60,10 @@ public class CoinBrick : MonoBehaviour
     {
         rigidBody.bodyType = RigidbodyType2D.Static;
         transform.localPosition = Vector3.zero;
+    }
+
+    void SetTrigger()
+    {
+        trigger.enabled = true;
     }
 }

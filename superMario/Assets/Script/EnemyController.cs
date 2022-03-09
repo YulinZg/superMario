@@ -7,7 +7,7 @@ namespace enemy
     {
         // Start is called before the first frame update
         [Header("Movement")]
-        public float moveSpeed = 1f;
+        public float moveSpeed = 0f;
         public Vector3 dir = new Vector3(-1, 0, 0);
 
         protected MarioController marioScript;
