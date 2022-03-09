@@ -91,14 +91,6 @@ public class MarioController : MonoBehaviour
                 Instantiate(fireBall, transform.position + new Vector3(0,0.1f,0), Quaternion.identity);
             }
         }
-
-        if(transform.position.y < -11)
-        {
-            isDead = true;
-            Destroy(gameObject);
-            game.showGameOver();
-        }
-
     }
 
     public void die()
@@ -115,11 +107,11 @@ public class MarioController : MonoBehaviour
                 animator.Play("dead");
                 rid.velocity = new Vector2(0, 0);
                 col.enabled = false;
+                tri.enabled = false;
                 rid.simulated = false;
                 StartCoroutine(DoBlinks(40, 1.5f / 40));
                 Invoke("changeToSmall", 1.7f);
             }
-            
         }
         else
         {
@@ -127,6 +119,7 @@ public class MarioController : MonoBehaviour
             isDead = true;
             rid.velocity = new Vector2(0, 0);
             col.enabled = false;
+            tri.enabled = false;
             animator.Play("dead");
             rid.AddForce(Vector2.up * 6, ForceMode2D.Impulse);
             //Debug.Log("die");

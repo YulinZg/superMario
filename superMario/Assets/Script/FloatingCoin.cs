@@ -40,10 +40,11 @@ public class FloatingCoin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-            game.updateCoins(1);
-            game.updateScore(200);
-            Destroy(gameObject);
-        }
+            if (!collision.gameObject.GetComponent<MarioController>().isDead)
+            {
+                game.updateCoins(1);
+                game.updateScore(200);
+                Destroy(gameObject);
+            }
     }
 }

@@ -49,8 +49,6 @@ public class TurtleEnemy : EnemyController
             shellMove();
             //checkDir.x = shellMoveDir.x;
         }
-        if (transform.position.y < -11)
-            destroy();
         //checkTile();
         //Debug.DrawRay(transform.position + rayOffset, checkDir * checkLength);
     }
