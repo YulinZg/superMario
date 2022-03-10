@@ -47,11 +47,12 @@ public class MarioController : MonoBehaviour
     public GameObject fireBall;
     public BoxCollider2D flagCol;
     public AudioSource marioEffect;
+    public AudioSource bgm;
+    public AudioSource starSource;
     public AudioClip pipe;
     public AudioClip jumpEffect;
     public AudioClip gameOver;
     public AudioClip killEnemy;
-    public AudioClip invincibleEffect;
     public AudioClip throughFire;
     public AudioClip eat;
     public AudioClip eatCoins;
@@ -59,7 +60,7 @@ public class MarioController : MonoBehaviour
     public AudioClip breakBrick;
     public AudioClip flag;
     public AudioClip musAppear;
-    public AudioSource bgm;
+    
 
     private GameManagement game;
 
@@ -142,6 +143,15 @@ public class MarioController : MonoBehaviour
             if (canFire)
             {
                 canFire = false;
+                animator.Play("dead");
+                rid.velocity = new Vector2(0, 0);
+                col.enabled = false;
+                tri.enabled = false;
+                rid.simulated = false;
+                marioEffect.clip = pipe;
+                marioEffect.Play();
+                StartCoroutine(DoBlinks(40, 1f / 40));
+                Invoke("changeToNormal", 1.1f);
                 mySprite.color = Color.white;
             }
             else
@@ -186,6 +196,13 @@ public class MarioController : MonoBehaviour
         rid.simulated = true;
         animator.runtimeAnimatorController = smallMario;
     }
+    private void changeToNormal()
+    {
+        col.enabled = true;
+        tri.enabled = true;
+        rid.simulated = true;
+    }
+
 
     private void move(float dir)
     {
@@ -430,6 +447,7 @@ public class MarioController : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
         isInvincible = false;
+        bgm.Play();
         if (canFire)
             mySprite.color = Color.red;
         else
@@ -439,9 +457,9 @@ public class MarioController : MonoBehaviour
     public void invincible()
     {
         isInvincible = true;
-        marioEffect.clip = invincibleEffect;
-        marioEffect.Play();
+        //marioEffect.clip = invincibleEffect;
+        starSource.Play();
         bgm.Stop();
-        StartCoroutine(invincibleBlinks(400, 20f / 400));
+        StartCoroutine(invincibleBlinks(400, 13.5f / 400));
     }
 }
