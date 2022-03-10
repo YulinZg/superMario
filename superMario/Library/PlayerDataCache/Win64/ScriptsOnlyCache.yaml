@@ -25,6 +25,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -80,6 +81,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -89,57 +94,57 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 620}
     - Class: 114
-      Script: {instanceID: 1524}
+      Script: {instanceID: 1516}
     - Class: 114
-      Script: {instanceID: 1530}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 1786}
+      Script: {instanceID: 1778}
     - Class: 114
-      Script: {instanceID: 1898}
+      Script: {instanceID: 1890}
     - Class: 114
-      Script: {instanceID: 2262}
+      Script: {instanceID: 2254}
     - Class: 114
-      Script: {instanceID: 2692}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2748}
     - Class: 114
-      Script: {instanceID: 2866}
+      Script: {instanceID: 2858}
     - Class: 114
-      Script: {instanceID: 2960}
+      Script: {instanceID: 2952}
     - Class: 114
-      Script: {instanceID: 2994}
+      Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 3098}
     - Class: 114
-      Script: {instanceID: 3334}
+      Script: {instanceID: 3326}
     - Class: 114
-      Script: {instanceID: 3356}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3390}
+      Script: {instanceID: 3382}
     - Class: 114
-      Script: {instanceID: 3424}
+      Script: {instanceID: 3416}
     - Class: 114
-      Script: {instanceID: 3594}
+      Script: {instanceID: 3586}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 3918}
+      Script: {instanceID: 3910}
     - Class: 114
-      Script: {instanceID: 4058}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4224}
+      Script: {instanceID: 4216}
     - Class: 114
-      Script: {instanceID: 4286}
+      Script: {instanceID: 4278}
     - Class: 114
-      Script: {instanceID: 4470}
+      Script: {instanceID: 4462}
     - Class: 114
-      Script: {instanceID: 5220}
+      Script: {instanceID: 5212}
     - Class: 114
-      Script: {instanceID: 5304}
+      Script: {instanceID: 5296}
     - Class: 114
-      Script: {instanceID: 5620}
+      Script: {instanceID: 5612}
     - Class: 114
-      Script: {instanceID: 5860}
+      Script: {instanceID: 5852}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -323,7 +328,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 1432e8027a30f4258fd2779b74d69f4a
+      Hash: 5c4cae0b59c2706c6590dc5d49be27f3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MarioController
@@ -365,7 +370,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: a5cedc884e42e7e7d2c78b21b0335bdb
+      Hash: ee2ee7c3f9a0e7a2a3b7c46ba6f27d7b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Door
@@ -810,4 +815,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/unity/superMario.exe
+  playerPath: D:/unity/sub/superMario.exe

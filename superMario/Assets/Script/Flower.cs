@@ -12,10 +12,14 @@ public class Flower : MonoBehaviour
     private float timer = 0;
     private int index = 0;
     private GameManagement game;
+
+    private AudioSource mus;
     // Start is called before the first frame update
     void Start()
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagement>();
+        mus = GameObject.FindGameObjectWithTag("mus").GetComponent<AudioSource>();
+        mus.Play();
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(Rise(riseDistance, riseTime));
     }
